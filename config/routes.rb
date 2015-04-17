@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   get 'callbacks/github'
 
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
+  #match '/auth/github/callback', to: 'sessions#create', via: [:get, :post]
+  match '/logout', to: 'sessions#destroy', via: [:get, :post]
   get 'welcome/welcome'
   root to: 'welcome#welcome'
  
