@@ -1,0 +1,11 @@
+<h1>Github#github_profile</h1>
+<img src="<%= @user_profile.image %>" width="100px" style="float: left;
+  margin-right: 12px;">
+  <div style="margin-left: 120px;">
+    <h4>From: <%= @user_profile.location %></h4>
+    <h4>Public Repos: <%= @user_profile.public_repo %></h4>
+    <h4>Public Gists: <%= @user_profile.public_gists %></h4>
+    <h4>Followers: <%= @user_profile.followers %></h4>
+    <h4>Following: <%= @user_profile.following %></h4>
+    <h4>Member Since: <%= Date.parse @user_profile.member_since %></h4>
+  </div>

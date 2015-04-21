@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'github/github_profile'
+
+  get 'github/github_repository'
+  
+
   get 'callbacks/github'
 
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }

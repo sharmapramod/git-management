@@ -3,7 +3,8 @@ class CallbacksController < Devise::OmniauthCallbacksController
 	  	auth = request.env['omniauth.auth']
 	    #sign_in_and_redirect @user
 	    # Find an identity here
-	    reset_session
+	    #reset_session
+	    #byebug
 	  	@identity = UserProvider.find_with_omniauth(auth)
 		if @identity.nil?
 			# If no identity was found, create a brand new one here
