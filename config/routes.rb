@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   get 'github/github_profile'
 
   get 'github/github_repository'
+
+  get 'github/new_invite'
   
 
   get 'callbacks/github'

@@ -8,4 +8,11 @@ class GithubController < ApplicationController
   	client = Octokit::Client.new(:access_token => current_user.github_profile.access_token)
     @repositories = client.repos
   end
+
+  def new_invite
+  	if params[:commit] =="Invite"
+  		mail = params[:email].downcase
+  		InvitationMailer.invitation_mail(mail, current_user.email).deliver
+  	end
+  end
 end
