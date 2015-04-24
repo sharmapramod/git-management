@@ -6,10 +6,14 @@ class UserProvider < ActiveRecord::Base
 	end
 
 	def self.create_with_omniauth(auth, user)
-		new_user = create(uid: auth['uid'], provider: auth['provider'], user: user)
-		GithubProfile.create_github_profile(auth, user)
-    	new_user
+		create(uid: auth['uid'], provider: auth['provider'], user: user).tap do 
+			GithubProfile.create_github_profile(auth, user)
+    	end    	
 	end
 
-	
+	def self.update_with_omniauth(auth, user)
+		create(uid: auth['uid'], provider: auth['provider'], user: user).tap do 
+			GithubProfile.update_github_profile(auth, user)
+    	end    	
+	end	
 end

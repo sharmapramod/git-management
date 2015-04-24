@@ -9,7 +9,9 @@ class CallbacksController < Devise::OmniauthCallbacksController
 		if @identity.nil?
 			# If no identity was found, create a brand new one here
 			user= User.from_omniauth(auth)
-			@identity = UserProvider.create_with_omniauth(auth, user)		
+			@identity = UserProvider.create_with_omniauth(auth, user)
+		else
+			GithubProfile.update_github_profile(auth)
 		end
 		#byebug
 		puts "Pass over user step1"
